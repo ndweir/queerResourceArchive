@@ -3,6 +3,8 @@ const axios = require('axios');
 const cors = require('cors');
 require('dotenv').config();
 
+const wayBackRouter = require('./routes/wayback.route');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -65,6 +67,9 @@ app.get('/api/resources', async (req, res) => {
     });
   }
 });
+
+
+app.use('/api/wayback', wayBackRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
