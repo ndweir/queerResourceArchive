@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import ResourceCard from './components/ResourceCard';
+import { ApiCheck } from './components/ApiCheck';
 
 const API_URL = 'http://localhost:3001/api/resources';
 
@@ -43,6 +44,8 @@ export default function App() {
           </p>
         </div>
       </header>
+
+      <ApiCheck />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {error && (

@@ -33,7 +33,7 @@ app.get('/api/resources', async (req, res) => {
     const url = "";
 
 
-    const { data } = await get(url);
+    const { data } = await axios.get(url);
 
     if (!data.response || !data.response.docs) {
       throw new Error('Invalid response format from Internet Archive');
