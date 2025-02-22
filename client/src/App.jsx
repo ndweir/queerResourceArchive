@@ -13,24 +13,24 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchResources = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const { data } = await axios.get(`${API_URL}?page=${page}`);
-        setResources(data.results);
-        setTotalPages(Math.ceil(data.totalFound / 10));
-      } catch (err) {
-        setError('Failed to fetch resources. Please try again later.');
-        console.error('Error:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchResources = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError(null);
+  //       const { data } = await axios.get(`${API_URL}?page=${page}`);
+  //       setResources(data.results);
+  //       setTotalPages(Math.ceil(data.totalFound / 10));
+  //     } catch (err) {
+  //       setError('Failed to fetch resources. Please try again later.');
+  //       console.error('Error:', err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchResources();
-  }, [page]);
+  //   fetchResources();
+  // }, [page]);
 
   return (
     <div className="min-h-screen bg-gray-100">
