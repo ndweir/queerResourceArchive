@@ -1,9 +1,11 @@
-const express = require('express');
-const axios = require('axios');
-const cors = require('cors');
-require('dotenv').config();
+import express, { json } from 'express';
+import axios from 'axios';
+import cors from 'cors';
+import dotenv from 'dotenv';
 
-const wayBackRouter = require('./routes/wayback.route');
+dotenv.config();
+
+import wayBackRouter from './routes/wayback.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -13,7 +15,7 @@ const cache = {};
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 app.use(cors());
-app.use(express.json());
+app.use(json());
 
 app.get('/api/resources', async (req, res) => {
   try {
@@ -31,7 +33,7 @@ app.get('/api/resources', async (req, res) => {
     const url = "";
 
 
-    const { data } = await axios.get(url);
+    const { data } = await get(url);
 
     if (!data.response || !data.response.docs) {
       throw new Error('Invalid response format from Internet Archive');
