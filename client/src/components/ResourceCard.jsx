@@ -1,17 +1,6 @@
 import React from 'react';
 
-const isAppropriateContent = (text) => {
-  if (!text) return true;
-  const inappropriateTerms = ['porn', 'xxx', 'nsfw', 'adult content', 'explicit'];
-  return !inappropriateTerms.some(term => text.toLowerCase().includes(term));
-};
-
 export default function ResourceCard({ resource }) {
-  // Skip rendering if content seems inappropriate
-  if (!isAppropriateContent(resource.title) || !isAppropriateContent(resource.description)) {
-    return null;
-  }
-
   return (
     <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
       <h2 className="text-2xl font-bold text-primary mb-2">{resource.title}</h2>

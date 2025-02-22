@@ -25,10 +25,12 @@ app.get('/api/resources', async (req, res) => {
       return res.json(cache[cacheKey].data);
     }
 
-    const url = `https://archive.org/advancedsearch.php?q=subject%3A(queer+OR+lgbt+OR+lgbtq+OR+lesbian+OR+gay+OR+transgender)+AND+(collection%3A(education+OR+opensource+OR+library_and_archives+OR+additional_collections))+-subject%3A(porn+OR+adult+OR+xxx+OR+nsfw)&fl[]=identifier&fl[]=title&fl[]=creator&fl[]=description&fl[]=mediatype&fl[]=collection&sort[]=downloads+desc&rows=10&page=${page}&output=json`;
+    //TODO: Add a better URL or web archives here
+    const url = "";
+
 
     const { data } = await axios.get(url);
-    
+
     if (!data.response || !data.response.docs) {
       throw new Error('Invalid response format from Internet Archive');
     }
@@ -57,7 +59,7 @@ app.get('/api/resources', async (req, res) => {
     res.json(response);
   } catch (error) {
     console.error('Error fetching from Internet Archive:', error.message);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Internal Server Error. Please try again later.',
       details: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
