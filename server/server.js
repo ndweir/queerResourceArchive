@@ -1,7 +1,11 @@
-const express = require('express');
-const axios = require('axios');
-const cors = require('cors');
-require('dotenv').config();
+import express, { json } from 'express';
+import axios from 'axios';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+import wayBackRouter from './routes/wayback.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -11,7 +15,7 @@ const cache = {};
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 app.use(cors());
-app.use(express.json());
+app.use(json());
 
 app.get('/api/resources', async (req, res) => {
   try {
@@ -65,6 +69,9 @@ app.get('/api/resources', async (req, res) => {
     });
   }
 });
+
+
+app.use('/api/wayback', wayBackRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
