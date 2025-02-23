@@ -27,21 +27,14 @@ export const DemoThingy = () => {
             flexGrow: 2,
             gap: '2rem',
         }}>
-            <div className="sidebarlinks" >
-                <ul style={{
-                    fontWeight: 700,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    cursor: 'pointer'
+            <div className="sidebarLinks" >
+
+                <a onClick={() => handleApiCheck('hrtCafe.net')}>hrtCafe.net</a>
+                <a onClick={() => handleApiCheck('trevorproject.org')}>trevorproject.org</a>
+                <a onClick={() => handleApiCheck('hrc.org')}>hrc.org</a>
+                <a onClick={() => handleApiCheck('altgo.us')}>altgo.us</a>
 
 
-                }}>
-                    <li onClick={() => handleApiCheck('hrtCafe.net')}>hrtCafe.net</li>
-                    <li onClick={() => handleApiCheck('trevorproject.org')}>trevorproject.org</li>
-                    <li onClick={() => handleApiCheck('hrc.org')}>hrc.org</li>
-                    <li onClick={() => handleApiCheck('altgo.us/pages/local-resources.html')}>altgo.us/pages/local-resources.html</li>
-
-                </ul>
             </div>
             <div style={{
                 textAlign: 'center',
