@@ -1,15 +1,16 @@
 @layer base {
     :root {
-        --blue: #5BCEFA;
-        --pink: #F5A9B8;
+        --blue: rgba(120, 120, 120, 0.1);
+        --pink: rgba(120, 120, 120, 0.1);
         --warningColor: #FF496E;
         --highlightColor: #205B00;
         --primary-color: #F5A9B8;
         --secondary-color: ##5bCEFA;
         --textColor: dimgray;
-        --backgroundColor: silver;
+        --backgroundColor: #170015;
         --border-color: black;
         --sans: "Open Sans", sans-serif;
+        --textColor: white;
         font-family: var(--sans);
 
         /* Font Scale */
@@ -49,6 +50,7 @@
         font-size: var(--base-size);
         padding: 0;
         margin: 0;
+        color: var(--textColor);
     }
 
     h1,
@@ -86,7 +88,6 @@
         align-items: center;
         height: 6rem;
         background-color: black;
-        color: white;
         /* border: 2px solid teal; */
     }
 
@@ -98,7 +99,8 @@
         align-items: flex-start;
         flex-wrap: nowrap;
         align-items: baseline;
-        border: 1px solid pink;
+        background: linear-gradient(var(--pink), rgba(255, 255, 255, 0.2), var(--blue));
+        /* border: 1px solid pink; */
     }
 
     .sidebarLinks {
@@ -111,7 +113,7 @@
     .contentContainer {
         grid-column: 3 / span 5;
         grid-row: 1 / span auto;
-        border: 1px solid green;
+        /* border: 1px solid green; */
     }
 
     .contentDisplay {

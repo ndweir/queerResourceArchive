@@ -1,7 +1,13 @@
 export const ArchiveHeader = () => {
     return (
-        <div>
+        <div style={{
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'center',
+        }}>
             <h1>Queer Resource Archive</h1>
-        </div>
+            <img src="/queerArchiveLogo.jpg" alt="logo" width={75} />
+
+        </div >
     )
 }
