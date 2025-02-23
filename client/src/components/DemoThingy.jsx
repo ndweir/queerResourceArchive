@@ -28,9 +28,10 @@ export const DemoThingy = ({ waybackData, setWaybackData, isLoading, setIsLoadin
             <div className="sidebarLinks">
                 <h3>Archived Sites</h3>
                 <a onClick={() => handleApiCheck('hrtCafe.net')}>hrtCafe.net</a>
-                <a onClick={() => handleApiCheck('trevorproject.org')}>trevorproject.org</a>
-                <a onClick={() => handleApiCheck('hrc.org')}>hrc.org</a>
+                <a onClick={() => handleApiCheck('https://www.lgbtmap.org/equality-maps')}>LGBTQ Map</a>
+                <a onClick={() => handleApiCheck('https://queermed.com')}>Queer Med</a>
                 <a onClick={() => handleApiCheck('altgo.us')}>altgo.us</a>
+                <a onClick={() => handleApiCheck('https://www.mntransgenderhealth.org')}>www.mntransgenderhealth.org</a>
 
 
             </div>
