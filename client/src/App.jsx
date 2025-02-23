@@ -1,54 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
-import ResourceCard from './components/ResourceCard';
-import { ApiCheck } from './components/ApiCheck';
-import { DemoThingy } from './components/DemoThingy';
+import React, { useState } from 'react';
+import SquareLoader from 'react-spinners/SquareLoader';
 
-const API_URL = 'http://localhost:3001/api/resources';
+//Components
+import { DemoThingy } from './components/DemoThingy';
+import { ArchiveHeader } from './components/ArchiveHeader';
+
+//Modules
+import { formatTimestamp } from './modules/formatTimeStamp';
+
+import './App.css';
+import { IntroBlurb } from './components/IntroBlurb';
+
 
 export default function App() {
-  const [resources, setResources] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [waybackData, setWaybackData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchResources = async () => {
-  //     try {
-  //       setLoading(true);
-  //       setError(null);
-  //       const { data } = await axios.get(`${API_URL}?page=${page}`);
-  //       setResources(data.results);
-  //       setTotalPages(Math.ceil(data.totalFound / 10));
-  //     } catch (err) {
-  //       setError('Failed to fetch resources. Please try again later.');
-  //       console.error('Error:', err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  const handleShowBlurb = () => {
+    setWaybackData(null);
+  }
 
-  //   fetchResources();
-  // }, [page]);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-gradient-to-r from-primary to-secondary py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl font-bold text-white text-center">
-            Queer Archive Explorer
-          </h1>
-          <p className="text-white text-center mt-2 text-lg">
-            Discover and explore queer resources from the Internet Archive
-          </p>
+    <div className='primaryContainer'>
+      <div className='secondaryContainer'>
+        <div className='headerContainer'>
+          <ArchiveHeader handleShowBlurb={handleShowBlurb} />
         </div>
-      </header>
 
-      <DemoThingy />
-
-
+        <div className='sideContainer'>
+          <DemoThingy waybackData={waybackData} setWaybackData={setWaybackData}
+            isLoading={isLoading} setIsLoading={setIsLoading}
+          />
+        </div>
+        <div
+          className='contentContainer'
+          style={{
+            textAlign: 'center',
+          }}>
+          {!waybackData && !isLoading &&
+            < IntroBlurb />
+          }
+          {isLoading &&
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <SquareLoader loading={isLoading} size={75} aria-label='Loading Spinner' speedMultiplier={2} color='hotpink' />
+            </div>
+          }
+          {waybackData && !isLoading &&
+            <div className='contentDisplay'>
+              <h3><b>Site:</b> {waybackData.url}</h3>
+              <h4><b>Archived Date:</b> {formatTimestamp(waybackData.archived_snapshots.closest.timestamp)} </h4>
+              <h5><b>Link:</b>
+                <a style={{
+                  cursor: 'pointer',
+                  borderRadius: '25px',
+                  paddingLeft: '5px',
+                  paddingRight: '5px'
+                }}
+                  href={waybackData.archived_snapshots.closest.url} target="_blank">
+                  {waybackData.archived_snapshots.closest.url}
+                </a>
+              </h5>
+            </div>
+          }
+        </div>
+      </div>
     </div>
   );
 }
