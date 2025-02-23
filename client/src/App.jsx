@@ -8,17 +8,22 @@ import { ArchiveHeader } from './components/ArchiveHeader';
 import { formatTimestamp } from './modules/formatTimeStamp';
 
 import './App.css';
+import { IntroBlurb } from './components/IntroBlurb';
 
 
 export default function App() {
   const [waybackData, setWaybackData] = useState(null);
+
+  const handleShowBlurb = () => {
+    setWaybackData(null);
+  }
 
 
   return (
     <div className='primaryContainer'>
       <div className='secondaryContainer'>
         <div className='headerContainer'>
-          <ArchiveHeader />
+          <ArchiveHeader handleShowBlurb={handleShowBlurb} />
         </div>
 
         <div className='sideContainer'>
@@ -29,6 +34,9 @@ export default function App() {
           style={{
             textAlign: 'center',
           }}>
+          {!waybackData &&
+            <IntroBlurb />
+          }
           {waybackData &&
             <div className='contentDisplay'>
               <h3><b>Site:</b> {waybackData.url}</h3>

@@ -137,6 +137,25 @@
     .contentDisplay a {
         color: cornflowerblue;
     }
+
+    .introBlurbContainer {
+        display: flex;
+        font-size: 20pt;
+        flex-direction: column;
+
+    }
+
+    .blurbHeader {
+        margin: 0;
+        padding: 0;
+    }
+
+    .blurbContent {
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin: 5rem;
+        font-size: 18pt;
+    }
 }
 
 @media only screen and (max-width: 450px) and (orientation: portrait) {
