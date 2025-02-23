@@ -1,4 +1,3 @@
-import { useState } from "react";
 import axios from "axios";
 
 export const DemoThingy = ({ waybackData, setWaybackData, isLoading, setIsLoading }) => {
@@ -17,7 +16,6 @@ export const DemoThingy = ({ waybackData, setWaybackData, isLoading, setIsLoadin
             })
     }
 
-
     return (
         <div style={{
             margin: '1rem',
@@ -27,11 +25,12 @@ export const DemoThingy = ({ waybackData, setWaybackData, isLoading, setIsLoadin
         }}>
             <div className="sidebarLinks">
                 <h3>Archived Sites</h3>
-                <a onClick={() => handleApiCheck('hrtCafe.net')}>hrtCafe.net</a>
+                <a onClick={() => handleApiCheck('hrtCafe.net')}>HRT Cafe</a>
                 <a onClick={() => handleApiCheck('https://www.lgbtmap.org/equality-maps')}>LGBTQ Map</a>
                 <a onClick={() => handleApiCheck('https://queermed.com')}>Queer Med</a>
-                <a onClick={() => handleApiCheck('altgo.us')}>altgo.us</a>
-                <a onClick={() => handleApiCheck('https://www.mntransgenderhealth.org')}>www.mntransgenderhealth.org</a>
+                <a onClick={() => handleApiCheck('altgo.us')}>Altgo</a>
+                <a onClick={() => handleApiCheck('https://www.mntransgenderhealth.org')}>Minnesota Trans Health</a>
+                <a onClick={() => handleApiCheck('https://www.silversprocket.net/2021/09/13/a-self-defense-study-guide-for-trans-women-and-gender-non-conforming-nonbinary-amab-folks/')}>Self Defense Study Guide</a>
 
 
             </div>
