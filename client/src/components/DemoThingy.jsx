@@ -27,8 +27,8 @@ export const DemoThingy = ({ waybackData, setWaybackData }) => {
             flexGrow: 2,
             gap: '2rem',
         }}>
-            <div className="sidebarLinks" >
-
+            <div className="sidebarLinks">
+                <h3>Archived Sites</h3>
                 <a onClick={() => handleApiCheck('hrtCafe.net')}>hrtCafe.net</a>
                 <a onClick={() => handleApiCheck('trevorproject.org')}>trevorproject.org</a>
                 <a onClick={() => handleApiCheck('hrc.org')}>hrc.org</a>

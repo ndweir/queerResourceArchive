@@ -106,8 +106,15 @@
     .sidebarLinks {
         display: flex;
         flex-direction: column;
+        gap: 0.5rem;
         justify-content: flex-start;
         font-weight: 600;
+        cursor: pointer;
+    }
+
+    .sidebarLinks h3 {
+        text-decoration: underline;
+        text-align: center;
     }
 
     .contentContainer {
@@ -123,6 +130,12 @@
         justify-content: center;
         align-items: flex-start;
         width: 100%;
+        padding: 2rem;
+        font-size: 16pt;
+    }
+
+    .contentDisplay a {
+        color: cornflowerblue;
     }
 }
 

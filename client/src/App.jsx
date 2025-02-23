@@ -36,7 +36,6 @@ export default function App() {
               <h5><b>Link:</b>
                 <a style={{
                   cursor: 'pointer',
-                  border: '1px solid blue',
                   borderRadius: '25px',
                   paddingLeft: '5px',
                   paddingRight: '5px'
