@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SquareLoader from 'react-spinners/SquareLoader';
 
 //Components
 import { DemoThingy } from './components/DemoThingy';
@@ -13,6 +14,7 @@ import { IntroBlurb } from './components/IntroBlurb';
 
 export default function App() {
   const [waybackData, setWaybackData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleShowBlurb = () => {
     setWaybackData(null);
@@ -27,17 +29,31 @@ export default function App() {
         </div>
 
         <div className='sideContainer'>
-          <DemoThingy waybackData={waybackData} setWaybackData={setWaybackData} />
+          <DemoThingy waybackData={waybackData} setWaybackData={setWaybackData}
+            isLoading={isLoading} setIsLoading={setIsLoading}
+          />
         </div>
         <div
           className='contentContainer'
           style={{
             textAlign: 'center',
           }}>
-          {!waybackData &&
-            <IntroBlurb />
+          {!waybackData && !isLoading &&
+            < IntroBlurb />
           }
-          {waybackData &&
+          {isLoading &&
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <SquareLoader loading={isLoading} size={75} aria-label='Loading Spinner' speedMultiplier={2} color='hotpink' />
+            </div>
+          }
+          {waybackData && !isLoading &&
             <div className='contentDisplay'>
               <h3><b>Site:</b> {waybackData.url}</h3>
               <h4><b>Archived Date:</b> {formatTimestamp(waybackData.archived_snapshots.closest.timestamp)} </h4>
